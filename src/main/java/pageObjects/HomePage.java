@@ -1,22 +1,24 @@
 package pageObjects;
 
+import org.example.base.BasePageClass;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
-public class HomePage {
-    //1:22
-    @FindBy(xpath = "//*[@id=\"headerMyAccountTitle\"]/div")
-    WebElement Button1;
+public class HomePage extends BasePageClass {
+
+    @FindBy(linkText = "All Departments")
+    WebElement allDepartment;
 
     public HomePage(WebDriver driver) {
-        PageFactory.initElements(driver,this);
+        super(driver);
     }
 
 
-    public void loginTest() {
-        Button1.click();
+    public AllDepartment checkAllDepartment() {
+        allDepartment.click();
+        return new AllDepartment(driver);
     }
 }
